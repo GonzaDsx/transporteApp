@@ -1,0 +1,24 @@
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand">
+            <i class="fas fa-bus"></i>
+            RutasApp
+        </a>        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link" aria-current="page" [routerLink]="['/rutas/',idUser]">Home</a>
+                <a class="nav-link" [routerLink]="['/cuenta/',idUser]">Mi cuenta</a>
+                <a class="nav-link active">Acerca de</a>                
+            </div>            
+        </div>
+        <span class="navbar-text">
+            <button class="btn btn-outline-light" type="button"
+            routerLink="/usuario">
+                Cerrar sesión
+            </button>
+        </span>
+    </div>
+</nav>

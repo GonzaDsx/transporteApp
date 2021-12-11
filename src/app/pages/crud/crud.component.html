@@ -1,0 +1,102 @@
+<div class="row row text-center mb-2 p-2 bg-dark text-white">
+    <h1>Registrarse<small>/Sign up</small></h1>
+</div>
+<hr class="text-white">
+
+<div class='row row text-end'>
+    <div class='col'>
+        <button routerLink = "/usuario"
+            class='btn btn-danger'>
+            <i class='fa fa-arrow-left'></i>
+            Regresar            
+        </button>
+    </div>
+</div>
+
+<div class="p-5 animate__animated animate__fadeIn faster text-white">
+    <div class = "col">
+        <form (ngSubmit)="guardar( f )"
+        #f = "ngForm">
+            <div class="form-group">
+                <label>Firebase ID</label>
+                <input type="text"
+                    class="form-control"
+                    placeholder="Firebase ID"
+                    [(ngModel)] = "usuario.id"
+                    name = id                    
+                    disabled="disabled">
+                <small class="form-text text-muted ">Este campo es autogenerado</small>
+            </div>
+            
+            <div class="form-group mt-3">
+                <label>Nombre de usuario</label>
+                <input type="text"
+                    class="form-control"
+                    placeholder="Ej. Juan López"
+                    [(ngModel)] = "usuario.nombre"
+                    name = nombre                    
+                    required>                
+            </div>
+            
+            <div class="form-group mt-3">
+                <label>Correo electrónico</label>
+                <input type="mail"
+                    class="form-control"
+                    placeholder="Ej. juanl@dominio.com"                    
+                    [(ngModel)] = "usuario.mail"                    
+                    name = mail
+                    required>                
+            </div>
+
+            <div class="form-group mt-3">
+                <label>Contraseña</label>
+                <input type="password"
+                    class="form-control"
+                    placeholder="*****"                    
+                    [(ngModel)] = "usuario.password"
+                    name = password                    
+                    required>                
+            </div>
+
+            <div class="form-group mt-3">
+                <label>Confirmar contraseña</label>
+                <input type="password"
+                    class="form-control"
+                    placeholder="*****"                    
+                    [(ngModel)] = "confPass"
+                    name = confPass
+                    required>                
+            </div>
+
+            <div class="form-group mt-2">
+                <label>Género</label>
+                <br>
+                <button *ngIf="usuario.genero"
+                        (click)="usuario.genero = false" 
+                        class="btn btn-outline-light w-50" type="button">                     
+                    <i class="fas fa-male"></i>
+                    Hombre
+                </button>
+
+                <button *ngIf="!usuario.genero"
+                    (click)="usuario.genero = true" 
+                    class="btn btn-outline-light w-50" type="button">                     
+                    <i class="fas fa-female"></i>
+                    Mujer
+                </button>
+            </div>
+
+            <hr>
+
+            <div class="form-group text-center">
+                <button type="submit"                        
+                        class="btn btn-warning">
+                        <i class="fa fa-save"></i>
+                        Guardar
+                </button>                
+            </div>
+        </form>
+    </div>
+</div>
+
+
