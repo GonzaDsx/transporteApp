@@ -40,20 +40,22 @@ export class UsuarioComponent implements OnInit {
       return;
     }
     var cor = this.correo.split("@");
+    var b=false;
     if(cor.length == 2){
       for(var i = 0; i < this.usuarios.length; i++){             
         if(this.correo == this.usuarios[i].mail && this.pass == this.usuarios[i].password){
           //console.log("usuario encontrado");
           this.id = this.usuarios[i].id;
           this.router.navigate(['/rutas/'+this.id]);
+          b = true;
           return;
         }
-      }   
+      }            
       Swal.fire({
         title: "Error",
         text: "Usuario o contraseña incorrecta",
         icon: "error"        
-      });
+      });    
     }else{
       Swal.fire({
         title: "Error",

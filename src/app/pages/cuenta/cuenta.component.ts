@@ -28,7 +28,7 @@ export class CuentaComponent implements OnInit {
   ngOnInit(): void {
     this.crudService.getUsuario()
       .subscribe(resp => {
-        console.log(resp);
+       // console.log(resp);
         this.usuarios = resp;
         this.llenarDatos();
     });          

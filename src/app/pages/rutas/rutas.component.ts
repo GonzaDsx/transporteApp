@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RutaModel } from 'src/app/models/ruta.model';
+import { RutasService } from 'src/app/services/rutas.service';
 
 @Component({
   selector: 'app-rutas',
@@ -6,19 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./rutas.component.css']
 })
 export class RutasComponent implements OnInit {
+  rutas: RutaModel[] = [];
   urlS: string[];
   idUser: string;
-  constructor() {
+  constructor(private rutasService: RutasService) {
     var url = window.location.toString();
     this.urlS = url.split('/');
-    /*for(var i = 0; i < urlS.length; i++) {
-      console.log(urlS[i]);    
-    }   */
-    //console.log(this.urlS[4]);
     this.idUser = this.urlS[4];    
   }
 
   ngOnInit(): void {    
+    this.rutasService.getRutas()
+      .subscribe( resp => this.rutas = resp);
   }
 
 }

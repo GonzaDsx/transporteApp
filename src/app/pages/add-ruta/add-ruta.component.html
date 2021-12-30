@@ -1,0 +1,96 @@
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand">
+            <i class="fas fa-bus"></i>
+            RutasApp
+        </a>        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link" [routerLink]="['/rutas/',idUser]">Home</a>
+                <a class="nav-link" [routerLink]="['/cuenta/',idUser]">Mi cuenta</a>
+                <a class="nav-link" [routerLink]="['/desarrolladores/',idUser]">Acerca de</a>                
+            </div>            
+        </div>
+        <span class="navbar-text">
+            <button class="btn btn-outline-light" type="button"
+            routerLink="/usuario">
+                Cerrar sesión
+            </button>
+        </span>
+    </div>
+</nav>
+
+<div class ="p-3 mb-2 text-white">
+    <h1>Nueva ruta</h1>
+    <hr class="text-white">
+</div>
+
+<div class="p-3 row text-end">
+    <div class="col"> 
+        <button class="btn btn-danger"
+        [routerLink]="['/rutas/', idUser]">
+            <i class="fa fa-arrow-left"></i>
+            Volver a rutas
+        </button>
+    </div>
+</div>
+
+<div class="p-5 animate__animated animate__fadeIn faster text-white">
+    <div>
+        <form (ngSubmit)="guardar( f )"
+                          #f="ngForm">
+            <div class="form-group">
+                <label>Firebase ID</label>
+                <input type="text"
+                             class="form-control"
+                             placeholder="Firebase ID"
+                             [(ngModel)] = "ruta.id"
+                             name="id"
+                             disabled="disabled">  
+                <small class="form-text text-muted">Este campo se llena de forma automática</small>
+            </div>
+
+            <div class="form-group mt-2">
+                <label>Ruta</label>
+                <input type="text"
+                             class="form-control"
+                             placeholder="Nombre de ruta"
+                             [(ngModel)] = "ruta.nombreRuta"
+                             name="nombreRuta"
+                             required>  
+            </div>
+
+            <div class="form-group mt-2">
+                <label>Tipo vehículo</label>
+                <br>
+                <button *ngIf="ruta.tipoVehiculo"
+                        (click)="ruta.tipoVehiculo = false"
+                        class="btn btn-outline-light w-50" type="button">
+                    <i class="fa fa-bus"></i>
+                    Camión
+                </button>
+
+                <button *ngIf="!ruta.tipoVehiculo"
+                        (click)="ruta.tipoVehiculo = true"
+                        class="btn btn-outline-light w-50" type="button">
+                    <i class="fa fa-shuttle-van"></i>
+                    Combi
+                </button>
+            </div>
+
+            <hr>
+            <div class="form-group text-end">
+                <button type="submit"
+                              class="btn btn-primary w-15">
+                    <i class="fa fa-save"></i>
+                    Guardar
+                </button>
+            </div>
+
+
+        </form>
+    </div>
+</div>
